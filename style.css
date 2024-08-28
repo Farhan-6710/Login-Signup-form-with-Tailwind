@@ -1,0 +1,291 @@
+/* style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+    /* Define CSS variables for dark mode */
+:root {
+    --bg-color-dark: #111827; /* dark:bg-gray-900 */
+    --text-color-dark: #FFFFFF; /* dark:text-white */
+    --secondary-text-color-dark: #adadad; /* dark:text-gray-300 */
+    --tertiary-text-color-dark: #e4e4e4; /* dark:text-gray-400 */
+    --input-bg-dark: #122033; /* dark:bg-gray-700 */
+    --border-color-dark: #4B5563; /* dark:border-gray-700 */
+    --hover-bg-dark: #2a3646; /* dark:hover:bg-gray-600 */
+    --border-focus-color: #22c55e; /* dark:focus:border-green-500 */
+    --transition-duration: 0.3s; /* Define a consistent transition duration */
+    --shadow-2xl: rgba(226, 226, 226, 0);
+}
+
+/* Fallback styles for dark mode */
+
+
+.main-content {
+    transition: background-color var(--transition-duration);
+}
+
+.dark .shadow-2xl {
+    box-shadow: 0px 0px 10px var(--shadow-2xl);
+}
+
+body .dark {
+    background-color: var(--bg-color-dark);
+    transition: background-color var(--transition-duration);
+}
+
+.dark .text-black {
+    color: var(--text-color-dark) !important;
+    transition: color var(--transition-duration);
+}
+
+.dark .text-gray-700 {
+    color: var(--tertiary-text-color-dark) !important;
+    transition: color var(--transition-duration);
+}
+
+.dark .text-gray-600 {
+    color: var(--tertiary-text-color-dark) !important;
+    transition: color var(--transition-duration);
+}
+
+.dark .bg-white {
+    background-color: var(--input-bg-dark) !important;
+    transition: background-color var(--transition-duration);
+}
+
+.dark .bg-gray-300 {
+    background-color: var(--secondary-text-color-dark);
+    transition: background-color var(--transition-duration);
+}
+
+.dark .border-gray-200 {
+    border-color: var(--border-color-dark) !important;
+    transition: border-color var(--transition-duration);
+}
+
+.dark .border-gray-200:focus {
+    color: var(--text-color-dark);
+    border-color: var(--border-focus-color) !important;
+    transition: color var(--transition-duration), border-color var(--transition-duration);
+}
+
+.dark .border-gray-300,
+.dark .border-gray-600 {
+    border-color: var(--border-color-dark) !important;
+    transition: border-color var(--transition-duration);
+}
+
+.dark .border-gray-700 {
+    border-color: var(--border-color-dark) !important;
+    transition: border-color var(--transition-duration);
+}
+
+.dark .hover\:bg-gray-100:hover {
+    background-color: var(--hover-bg-dark) !important;
+    transition: background-color var(--transition-duration);
+}
+
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"] {
+    background-color: var(--input-bg-dark) !important;
+    color: var(--text-color-dark) !important;
+    border-color: var(--border-color-dark) !important;
+    transition: background-color var(--transition-duration), border-color var(--transition-duration), color var(--transition-duration);
+    caret-color: var(--text-color-dark);
+}
+
+.dark input[type="text"]:focus,
+.dark input[type="email"]:focus,
+.dark input[type="password"]:focus {
+    background-color: var(--input-bg-dark) !important;
+    border-color: var(--border-focus-color) !important;
+    caret-color: var(--text-color-dark);
+}
+
+.dark input[type="text"]:-webkit-autofill,
+.dark input[type="email"]:-webkit-autofill,
+.dark input[type="password"]:-webkit-autofill,
+.dark input[type="text"]:-webkit-autofill:hover,
+.dark input[type="email"]:-webkit-autofill:hover,
+.dark input[type="password"]:-webkit-autofill:hover,
+.dark input[type="text"]:-webkit-autofill:focus,
+.dark input[type="email"]:-webkit-autofill:focus,
+.dark input[type="password"]:-webkit-autofill:focus {
+    border-color: var(--border-focus-color) !important;
+    -webkit-text-fill-color: var(--text-color-dark) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--input-bg-dark) inset !important;
+    caret-color: var(--text-color-dark);
+}
+
+
+/* Light Mode input field dropdown options issue */
+
+
+input[type="text"]:-webkit-autofill,
+input[type="email"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill:hover,
+input[type="email"]:-webkit-autofill:hover,
+input[type="password"]:-webkit-autofill:hover,
+input[type="text"]:-webkit-autofill:focus,
+input[type="email"]:-webkit-autofill:focus,
+input[type="password"]:-webkit-autofill:focus {
+    border-color: var(--border-focus-color) !important;
+    -webkit-text-fill-color: var(--border-color-dark) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--text-color-dark) inset !important;
+    transition: background-color 0s, border-color 0s, color 0s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: var(--text-color-dark) !important;
+    border-color: var(--border-focus-color) !important;
+    transition: background-color 0s, border-color 0s, color 0s;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: var(--text-color-dark) !important;
+    color: var(--bg-color-dark) !important;
+}
+
+
+.switch {
+    font-size: 17px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: inline-block;
+    width: 64px;
+    height: 34px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 20px;
+    left: 4px;
+    bottom: 4px;
+    z-index: 2;
+    background-color: #e8e8e8;
+    transition: .4s;
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+  }
+  
+  .sun svg {
+    position: absolute;
+    top: 6px;
+    left: 36px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .moon svg {
+    fill: #73C0FC;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* .switch:hover */.sun svg {
+    animation: rotate 15s linear infinite;
+  }
+  
+  @keyframes rotate {
+   
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* .switch:hover */.moon svg {
+    animation: tilt 5s linear infinite;
+  }
+  
+  @keyframes tilt {
+   
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(-10deg);
+    }
+  
+    75% {
+      transform: rotate(10deg);
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .input:checked + .slider {
+    background-color: #183153;
+  }
+  
+  .input + .slider {
+    box-shadow: 0 0 15px rgba(53, 53, 53, 0.322);
+  }
+  
+  .input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+
+  /* styles.css */
+.main-content {
+  margin: 0;
+  overflow: hidden; /* Prevent scrolling */
+  width: 100vw;
+  height: 100svh; /* Full viewport height */
+}
+
+.follower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: var(--border-focus-color);
+  border-radius: 50%;
+  transition: transform 0.1s linear; /* Smooth transition */
+  pointer-events: none; /* Ignore pointer events */
+  z-index: 11;
+}
