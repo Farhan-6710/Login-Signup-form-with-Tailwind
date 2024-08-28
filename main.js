@@ -1,4 +1,3 @@
-// Event listener for when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     // Get references to the dark mode toggle button and the main content container
     const darkModeToggle = document.getElementById("dark-mode-toggle");
@@ -7,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initially set dark mode to false (light mode)
     let isDarkMode = false;
 
-    // Apply initial light mode styles
+    // Apply initial dark mode styles
     setDarkMode(isDarkMode);
 
     // Event listener for toggling dark mode on button click
@@ -28,13 +27,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Another DOMContentLoaded event listener for form animations
 document.addEventListener("DOMContentLoaded", function () {
     // Show the login form with animation after a short delay
     setTimeout(function () {
         const loginContainer = document.querySelector("#login-form");
-        loginContainer.classList.remove("-translate-x-44");
-        loginContainer.classList.add("opacity-100", "translate-x-0");
+        if (loginContainer) {
+            // Ensure the initial state for the login container
+            loginContainer.style.opacity = '0';
+            loginContainer.style.transform = 'translateX(-100%)';
+            loginContainer.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            // Display the login form and apply the transition
+            loginContainer.style.display = 'block';
+            setTimeout(() => {
+                loginContainer.style.opacity = '1';
+                loginContainer.style.transform = 'translateX(0)';
+                console.log('Login form shown.');
+            }, 100);
+        } else {
+            console.log('Login container not found.');
+        }
     }, 100);
 
     // Event listener for switching to the sign-up form
@@ -43,20 +55,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const loginContainer = document.querySelector("#login-form");
         const signUpContainer = document.querySelector("#sign-up-form");
 
-        // Slide out and hide the login form
-        loginContainer.classList.remove("opacity-100", "translate-x-0");
-        loginContainer.classList.add("opacity-0", "-translate-x-44");
+        if (loginContainer && signUpContainer) {
+            // Hide the login form with animation
+            loginContainer.style.opacity = '0';
+            loginContainer.style.transform = 'translateX(-100%)';
 
-        setTimeout(function () {
-            loginContainer.style.display = "none";
-
-            // Show the sign-up form with initial classes reset
-            signUpContainer.style.display = "block";
             setTimeout(function () {
-                signUpContainer.classList.remove("opacity-0", "translate-x-44");
-                signUpContainer.classList.add("opacity-100", "translate-x-0");
-            }, 100);
-        }, 500);
+                loginContainer.style.display = 'none';
+
+                // Show the sign-up form with initial styles
+                signUpContainer.style.display = 'block';
+                signUpContainer.style.opacity = '0';
+                signUpContainer.style.transform = 'translateX(100%)';
+                signUpContainer.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+                setTimeout(function () {
+                    signUpContainer.style.opacity = '1';
+                    signUpContainer.style.transform = 'translateX(0)';
+                    console.log('Sign-up form shown.');
+                }, 100);
+            }, 500);
+        } else {
+            console.log('Containers for switching forms not found.');
+        }
     });
 
     // Event listener for switching back to the login form
@@ -65,20 +86,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const loginContainer = document.querySelector("#login-form");
         const signUpContainer = document.querySelector("#sign-up-form");
 
-        // Slide out and hide the sign-up form
-        signUpContainer.classList.remove("opacity-100", "translate-x-0");
-        signUpContainer.classList.add("opacity-0", "translate-x-44");
+        if (loginContainer && signUpContainer) {
+            // Hide the sign-up form with animation
+            signUpContainer.style.opacity = '0';
+            signUpContainer.style.transform = 'translateX(100%)';
 
-        setTimeout(function () {
-            signUpContainer.style.display = "none";
-
-            // Show the login form with initial classes reset
-            loginContainer.style.display = "block";
             setTimeout(function () {
-                loginContainer.classList.remove("opacity-0", "-translate-x-44");
-                loginContainer.classList.add("opacity-100", "translate-x-0");
-            }, 100);
-        }, 500);
+                signUpContainer.style.display = 'none';
+
+                // Show the login form with initial styles
+                loginContainer.style.display = 'block';
+                loginContainer.style.opacity = '0';
+                loginContainer.style.transform = 'translateX(-100%)';
+                loginContainer.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+                setTimeout(function () {
+                    loginContainer.style.opacity = '1';
+                    loginContainer.style.transform = 'translateX(0)';
+                    console.log('Login form shown.');
+                }, 100);
+            }, 500);
+        } else {
+            console.log('Containers for switching forms not found.');
+        }
     });
 });
 
@@ -94,10 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         posX += (mouseX - posX) * 0.1;
         posY += (mouseY - posY) * 0.1;
 
-        // Apply the updated position to the follower element
         follower.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
 
-        // Request the next frame to continue the animation
         requestAnimationFrame(updateFollower);
     }
 
